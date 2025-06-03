@@ -27,7 +27,7 @@ class LlambaLMWrapper(HFLM):
         """Get the model configuration."""
         from Llamba.configuration_llamba import LlambaConfig
 
-        self._config = LlambaConfig.from_pretrained(pretrained)
+        self._config = LlambaConfig.from_pretrained(pretrained, **kwargs)
 
     def _create_model(
         self, pretrained: str, dtype: Optional[Union[str, torch.dtype]] = "float16", **kwargs
@@ -40,6 +40,7 @@ class LlambaLMWrapper(HFLM):
             device=self._device,
             dtype=torch.bfloat16 if dtype == "auto" else lm_eval.models.utils.get_dtype(dtype),
         )
+        self._model.tie_weights = lambda: None
 
     def _model_generate(self, context, max_length, stop, **generation_kwargs):
         """Generate text from the model."""

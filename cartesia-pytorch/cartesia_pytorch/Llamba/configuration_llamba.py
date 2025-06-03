@@ -37,9 +37,9 @@ class LlambaConfig(PretrainedConfig):
 
     def __init__(
         self,
-        vocab_size: int,
-        d_model: int,
-        tie_embeddings: bool = False,
+        vocab_size: int = 128256,
+        d_model: int = 4096, 
+        tie_embeddings: bool = True, # set to true for tied; False for untied
         pad_vocab_size_multiple: int = 8,
         lm_head_bias: bool = False,
         n_layer: int = 32,

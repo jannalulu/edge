@@ -7,8 +7,8 @@ To evaluate a Rene-class model, pass `rene_ssm` to the `--model` argument.
 
 from lm_eval.__main__ import cli_evaluate
 
-from ..cartesia_pytorch.Llamba.llamba_eval_wrapper import LlambaLMWrapper  # noqa: F401
-from ..cartesia_pytorch.Rene.rene_eval_wrapper import ReneLMWrapper  # noqa: F401
+from cartesia_pytorch.Llamba.llamba_eval_wrapper import LlambaLMWrapper  # noqa: F401
+from cartesia_pytorch.Rene.rene_eval_wrapper import ReneLMWrapper  # noqa: F401
 
 if __name__ == "__main__":
     cli_evaluate()
