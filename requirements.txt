@@ -1,0 +1,7 @@
+setuptools
+torch==2.1.0
+numpy==1.2.6
+causal-conv1d==1.4.0 --no-build-isolation
+mamba-ssm==2.2.2 --no-build-isolation
+flash_attn==2.7.3 --no-build-isolation
+lm_eval==0.4.8
