@@ -52,6 +52,11 @@ class ReneLMWrapper(HFLM):
             if key in generation_kwargs:
                 generation_kwargs.pop(key)
 
+        # Convert max_new_tokens to max_length if present
+        if "max_new_tokens" in generation_kwargs:
+            max_new_tokens = generation_kwargs.pop("max_new_tokens")
+            max_length = context.shape[1] + max_new_tokens
+            
         # The custom GenerationMixin imported from mamba_ssm currently does not support
         # passing stopping criteria.
         # For the time being, we simply generate to max length, then truncate (equivalent result).
